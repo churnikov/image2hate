@@ -20,9 +20,9 @@ from scipy.ndimage.filters import median_filter
 
 def fit_image(img: np.ndarray, size: int) -> np.ndarray:
     small_im = img
-    filter_sz: int = 1
+    filter_sz: int = 2
     while small_im.shape[1] > size:
-        small_im = median_filter(small_im, size = (filter_sz, filter_sz)
+        small_im = median_filter(img, size = (filter_sz, filter_sz)
                                 )[::filter_sz, ::filter_sz]
         filter_sz += 1
     return small_im

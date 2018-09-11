@@ -12,9 +12,12 @@ Options:
   --back=EMOJI          Set background emoji [default: 🖤]
   --width=WIDTH         Set with of resulting "image" [default: 20]
 """
+from io import BytesIO
+
 from docopt import docopt
 from PIL import Image
 import numpy as np
+import requests
 from scipy.ndimage.filters import median_filter
 
 
@@ -29,7 +32,10 @@ def fit_image(img: np.ndarray, size: int) -> np.ndarray:
 
 
 def load_image(path: str) -> np.ndarray:
-    img = Image.open(path)
+    im_str = path
+    if 'http://' in path or 'https://' in path:
+        im_str = BytesIO(requests.get(path).content)
+    img = Image.open(im_str)
     gray_img = np.mean(img, axis=2)
     return gray_img
 

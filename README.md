@@ -10,8 +10,11 @@ that filthy image, that you hate so much 😡
 ## How to use
 1. `$git clone https://github.com/kuparez/image2hate.git`
 2. `$pip3 install -r requirements.txt`
-3. `python3 image2hate.txt`
-4. Follow <strike>the light</strike> the instructions
+3. `python3 image2hate.py path_or_url_to_image` or `python3 image2hate.py -h` for detailed instructions
+
+You can try this image:
+
+![cat_ex](images/cat.png)
 
 The result should be something like this:
 
